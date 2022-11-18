@@ -1,7 +1,6 @@
-TOKEN = "5689961767:AAFiCYf1Rbx4k3T-BkeSOJ6Wdk_dz-GQMXk"
-exchanges = {
+TOKEN = "5785464786:AAHbLy9KP1ZxX89QqX7EybtTd-h5EZzsjc8"
+keys = {
+    'рубль': 'RUB',
     'доллар': 'USD',
     'евро': 'EUR',
-    'рубль': 'RUB'
 }
-

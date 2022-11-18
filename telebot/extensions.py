@@ -1,34 +1,34 @@
-import json
 import requests
-from config import exchanges
+import json
+from config import keys
+
 
 class APIException(Exception):
     pass
 
 
-class Convertor:
+class ValueConverter:
     @staticmethod
-    def get_price(base, sym, amount):
-        try:
-            base_key = exchanges[base.lower()]
-        except KeyError:
-            raise APIException(f"Валюта {base} не найдена!")
+    def get_price(quote: str, base: str, amount: str):
+        if quote == base:
+            raise APIException(f"Не удалось перевести одинаковые валюты {base}")
 
         try:
-            sym_key = exchanges[sym.lower()]
+            quote_ticker = keys[quote]
         except KeyError:
-            raise APIException(f"Валюта {sym} не найдена!")
+            raise APIException(f"Не удалось обработать валюту {quote}")
 
-        if base_key == sym_key:
-            raise APIException(f'Невозможно перевести одинаковые валюты {base}!')
-        
+        try:
+            base_ticker = keys[base]
+        except KeyError:
+            raise APIException(f"Не удалось обработать валюту {base}")
+
         try:
             amount = float(amount)
         except ValueError:
-            raise APIException(f'Не удалось обработать количество {amount}!')
-        
-        r = requests.get(f"https://api.exchangeratesapi.io/latest?base={base}&symbols={sym}")
-        resp = json.loads(r.content)
-        new_price = resp['rates'][sym] * float(amount)
-        message =  f"Цена {amount} {base} в {sym} : {new_price}"
-        return message
+            raise APIException(f"Не удалось обработать количество {amount}")
+
+        r = requests.get(f"https://min-api.cryptocompare.com/data/price?fsym={quote_ticker}&tsyms={base_ticker}")
+        text = json.loads(r.content)[keys[base]]*amount
+
+        return text

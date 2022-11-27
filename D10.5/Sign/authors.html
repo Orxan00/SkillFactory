@@ -1,0 +1,15 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+
+{% block title %}
+Войти в систему
+{% endblock title %}
+
+{% block content %}
+{% if is_not_premium %}
+    <button> <a href="/sign/upgrade/">Стать автором!</a> </button>
+{%else%}
+<p> Вы уже автор! </p>
+{% endif %}
+{% endblock content %}

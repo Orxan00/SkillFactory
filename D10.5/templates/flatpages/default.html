@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>
+            {% block title %}
+            {{ flatpage.title }}
+            {% endblock title %}
+        </title>
+        {% load static %}
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />  
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <div class="container">
+                <a class="navbar-brand" href="/admin/flatpages/flatpage/">Django flatpages</a>
+                <a class="navbar-brand" href="/">News</a> 
+                <a class="navbar-brand" href="/add/">Add news</a>
+                <a class="navbar-brand" href="/search/">Search</a>
+                {% if request.user.is_authenticated %}
+                    <p class="navbar-brand">Добро пожаловать, {{user.username}}</p>                    
+                    <a class="navbar-brand" href="/accounts/logout/">Выход</a>
+                    <a class="navbar-brand"  href="/sign/authors/">Хочу стать автором!</a>
+                {%else%}                    
+                    <a class="navbar-brand"  href="/accounts/login/">Вход</a>
+                {%endif%}
+                 
+            </div>
+        </nav>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    {% block content %}
+                    {{ flatpage.content }}
+                    {% endblock content %}
+                </div>
+            </div>
+         </div>
+    
+    </body>
+</html>

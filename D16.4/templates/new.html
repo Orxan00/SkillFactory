@@ -1,0 +1,55 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+    <h1>{{news.title}}</h1>
+    <hr>
+     
+        <table>   
+            <tr>
+                <td>
+                    Автор 
+                </td>                
+                <td>
+                    Заголовок 
+                </td>
+                <td>
+                    Текст
+                </td>
+                <td>
+                    Категория
+                </td>
+                <td>
+                    Даты публикации
+                </td>           
+            </tr>
+            <tr>
+                <td>
+                    {{ news.author.user }}
+                </td>               
+                <td>
+                    {{ news.title|censor }}
+                <td>
+                    {{ news.text|censor }}
+                </td>
+                <td>
+                    {{ news.get_category_name }}
+                </td>
+                <td>
+                    {{ news.created| date:'D M Y H:m' }}
+                </td>                              
+            </tr>
+        </table>
+        <button>
+            <a href={% url 'add_subscribers' news.id %}>Подписаться</a>            
+        </button> 
+        
+        
+        
+    
+{% endblock content %}

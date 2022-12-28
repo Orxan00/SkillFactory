@@ -43,17 +43,17 @@ POST /submitData/
 пример объекта запроса
 ```
 {
-  "title": "Пхия",
+  "title": "Всмп",
   "beauty_title": "пер. ",
-  "other_titles": "Триев",
+  "other_titles": "Приев",
   "add_time": "2021-09-22 13:18:13",
   "connect": "",
   "user": {
-    "email": "qwerty@mail.ru",
-    "phone": "+7 555 55 55",
-    "name": "Василий",
-    "fam": "Пупкин",
-    "otc": "Иванович"
+    "email": "dfgknm@mail.ru",
+    "phone": "+7 000 00 00",
+    "name": "Олег",
+    "fam": "Алексеенко",
+    "otc": "Алексеевич"
   },
   "images": [
     {
@@ -97,8 +97,8 @@ GET /submitData/<id>
   "date_added": "2022-11-30T15:43:47.965255",
   "status": "new",
   "beauty_title": "пер. ",
-  "title": "Пхия",
-  "other_titles": "Триев",
+  "title": "Всмп",
+  "other_titles": "Приев",
   "connect": "",
   "add_time": "2021-09-22T13:18:13",
   "level_winter": "",
@@ -124,7 +124,7 @@ GET /submitData/?user__email=<email>
 [
  {
     "id": 19,
-    "title": "Анзоб",
+    "title": "Латс",
     "beauty_title": "пер. ",
     "status": "new",
     "date_added": "2022-12-09T19:39:07.101576",
@@ -134,7 +134,7 @@ GET /submitData/?user__email=<email>
   },
   {
     "id": 20,
-    "title": "Пхия",
+    "title": "Всмп",
     "beauty_title": "пер. ",
     "status": "new",
     "date_added": "2022-12-09T20:04:37.379822",
